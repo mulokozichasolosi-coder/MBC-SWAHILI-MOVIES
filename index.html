@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MBC SWAHILI MOVIES</title>
+<style>
+body{background:#111;color:#fff;font-family:sans-serif;margin:0}
+.header{background:red;padding:15px;text-align:center;font-weight:bold;font-size:22px}
+.search{padding:10px;text-align:center}
+.search input{width:90%;padding:12px;border-radius:10px;border:none}
+.movies{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px}
+.card{background:#222;border-radius:10px;overflow:hidden}
+.card img{width:100%;height:220px;object-fit:cover}
+.card h3{font-size:14px;padding:5px;margin:0}
+.card p{font-size:11px;color:#aaa;padding:0 5px 10px}
+.card a{display:block;background:red;color:#fff;text-align:center;padding:8px;text-decoration:none;margin:5px;border-radius:5px}
+</style>
+</head>
+<body>
+<div class="header">MBC SWAHILI MOVIES 🔥</div>
+<div class="search"><input type="text" id="search" placeholder="Tafuta movie..."></div>
+<div class="movies" id="movies"></div>
+
+<script>
+const movies = [
+  {title:"John Wick 4 - Imetafsiriwa", year:"2023", img:"https://image.tmdb.org/t/p/w500/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg", link:"https://t.me/link_yako_hapa"},
+  {title:"Extraction 2 - Imetafsiriwa", year:"2023", img:"https://image.tmdb.org/t/p/w500/7gKI9hpEMcZUQpNgKrkDzJpbnNS.jpg", link:"https://t.me/link_yako_hapa"},
+];
+
+function show(list){
+  document.getElementById('movies').innerHTML = list.map(m=>`
+    <div class="card">
+      <img src="${m.img}">
+      <h3>${m.title}</h3>
+      <p>${m.year} | Swahili Dubbed</p>
+      <a href="${m.link}" target="_blank">TAZAMA / DOWNLOAD</a>
+    </div>
+  `).join('');
+}
+show(movies);
+document.getElementById('search').addEventListener('input', e=>{
+  show(movies.filter(m=>m.title.toLowerCase().includes(e.target.value.toLowerCase())))
+});
+</script>
+</body>
+</html>
